@@ -33,55 +33,55 @@ class Registration(unittest.TestCase):
         #accept coockies
         xpath('//*[@id="pageMainContainer"]/div[4]/div[1]/div[2]/div/div[3]/button[2]/span').click()
 
-        #wybieramy zakladanie konta
+        #choice create account
         cls("createAccount").click()
 
-        #wpisujemy imie i nazwisko
+        #name & surname
         id("f_nameSurname").send_keys(Name_Surname)
 
-        #wpisujemy login
+        #insert login
         id("login_user").click()
         sleep(1)
         id("login_user").clear()
         id("login_user").send_keys(login)
 
-        #klikamy sprawdz
+        #click check
         name("checkLogin").click()
 
         sleep(1)
 
-        #wyberamy z listy
+        #choice from list
         element = xpath('/html/body/div[1]/div[2]/div/div/div/form/div/div[3]/div[1]/fieldset/div/div/ul/li[2]/div/ul/li/div/div[3]/ul/li[1]')
         hover = ActionChains(driver).move_to_element(element)
         hover.click().perform()
         sleep(1)
 
 
-        #wybranie dnia urodzin
+        #input birth day
         xpath('//*[@id="f_birthDate_day"]').click()
         xpath('//*[@id="f_birthDate_day"]').send_keys(d_birth)
         xpath('//*[@id="f_birthDate_day"]').click()
         sleep(1)
 
-        #wybranie miesiaca urodzin
+        #input birth month
         month = Select(name("birthDate[month]"))
         month.select_by_value(m_birth)
 
-        #wybieranie roku urodzin
+        #input birth year
         year = Select(name("birthDate[year]"))
         year.select_by_value(y_birth)
 
-        #wybieramy plec
+        #choice gender
         id("f_gender_M").click()
 
-        #wpisujemy haslo
+        #insert password
         id("f_password").send_keys(password)
 
-        #potwierdzenie hasla
+        #confirm password
         xpath('/html/body/div[1]/div[2]/div/div/div/form/div/div[3]/fieldset[1]/div/div/ul/li[2]/div[1]/input')\
         .send_keys(password)
 
-        #klikamy zaloz konto
+        #click create account
         id("registerEmailFormSubmitButton").click()
 
         sleep(5)
